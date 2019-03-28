@@ -1,8 +1,7 @@
-package com.hms.application.dao;
+package com.hms.application.service;
 
 import com.hms.application.entity.InfoUser;
 import com.hms.application.repository.HelloRepository;
-import com.hms.application.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
