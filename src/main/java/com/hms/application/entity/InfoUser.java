@@ -1,8 +1,6 @@
 package com.hms.application.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @Description ToDo
@@ -15,7 +13,8 @@ import javax.persistence.Table;
 @Table(name = "info_user")
 public class InfoUser {
     @Id
-    private String userId;      //用户表主键
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int userId;      //用户表主键
 
     private String userName;    //用户姓名
 
@@ -29,11 +28,11 @@ public class InfoUser {
 
     private String creationTime;//创建日期
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

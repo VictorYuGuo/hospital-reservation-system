@@ -22,13 +22,13 @@ public interface UserRepository extends JpaRepository<InfoUser, String> {
     //原生sql插入新记录
     @Transactional
     @Modifying
-    @Query(value = "Insert into info_user(user_id,user_wechat,user_type,creation_time) values(?1,?2,?3,?4)", nativeQuery = true)
-    int addUser(String userId, String userWechat, String userType, String creationTime);
+    @Query(value = "Insert into info_user(user_wechat,user_type,creation_time) values(?1,?2,?3)", nativeQuery = true)
+    void addUser(String userWechat, String userType, String creationTime);
 
     //非原生sql根据微信openid更新信息
     @Transactional
     @Modifying
     @Query(value = "Update InfoUser set userName = :userName , userPhone = :userPhone, userSex = :userSex where userWechat = :userWechat")
-    int updateNameAndPhoneAndSexByUserWechat(@Param(value = "userName") String userName, @Param(value = "userPhone") String userPhone, @Param(value = "userSex") String userSex, @Param(value = "userWechat") String userWechat);
+    void updateNameAndPhoneAndSexByUserWechat(@Param(value = "userName") String userName, @Param(value = "userPhone") String userPhone, @Param(value = "userSex") String userSex, @Param(value = "userWechat") String userWechat);
 
 }
