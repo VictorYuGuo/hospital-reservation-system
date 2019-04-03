@@ -14,13 +14,17 @@ import javax.persistence.*;
 public class infoDoc {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String pkDoc;       //医生编号
+    private int pkDoc;       //医生编号
 
     private String docName;     //医生姓名
 
     private String docID;       //医生身份证号
 
     private String docPhone;    //医生电话号码
+
+    private String docPassword;   //医生登录密码
+
+    private String docPicture;   //医生照片URL
 
     private String docEmail;    //医生邮箱
 
@@ -36,11 +40,11 @@ public class infoDoc {
 
     private String dm;           //删除标记
 
-    public String getPkDoc() {
+    public int getPkDoc() {
         return pkDoc;
     }
 
-    public void setPkDoc(String pkDoc) {
+    public void setPkDoc(int pkDoc) {
         this.pkDoc = pkDoc;
     }
 
@@ -67,6 +71,14 @@ public class infoDoc {
     public void setDocPhone(String docPhone) {
         this.docPhone = docPhone;
     }
+
+    public String setDocPassword(){return docPassword;}
+
+    public void getDocPassword(String docPassword){this.docPassword = docPassword;}
+
+    public String setDocPicture(){return docPicture;}
+
+    public void getDocPicture(String docPicture){this.docPicture = docPicture;}
 
     public String getDocEmail() {
         return docEmail;
