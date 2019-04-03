@@ -1,8 +1,6 @@
 package com.hms.application.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @Description ToDo
@@ -15,6 +13,7 @@ import javax.persistence.Table;
 @Table(name = "info_doc")
 public class infoDoc {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String pkDoc;       //医生编号
 
     private String docName;     //医生姓名
