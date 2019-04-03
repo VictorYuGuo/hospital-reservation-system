@@ -1,8 +1,6 @@
 package com.hms.application.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @Description ToDo
@@ -15,7 +13,8 @@ import javax.persistence.Table;
 @Table(name = "info_article")
 public class infoArticle {
     @Id
-    private String pkArticle;       //表主键
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int pkArticle;       //表主键
 
     private String artTitle;        //资讯标题
 
@@ -29,11 +28,11 @@ public class infoArticle {
 
     private String dm;               //删除标记
 
-    public String getPkArticle() {
+    public int getPkArticle() {
         return pkArticle;
     }
 
-    public void setPkArticle(String pkArticle) {
+    public void setPkArticle(int pkArticle) {
         this.pkArticle = pkArticle;
     }
 

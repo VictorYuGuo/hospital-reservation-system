@@ -1,8 +1,6 @@
 package com.hms.application.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @Description ToDo
@@ -15,7 +13,8 @@ import javax.persistence.Table;
 @Table(name = "info_doc")
 public class infoDoc {
     @Id
-    private String pkDoc;       //医生编号
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int pkDoc;       //医生编号
 
     private String docName;     //医生姓名
 
@@ -37,11 +36,11 @@ public class infoDoc {
 
     private String dm;           //删除标记
 
-    public String getPkDoc() {
+    public int getPkDoc() {
         return pkDoc;
     }
 
-    public void setPkDoc(String pkDoc) {
+    public void setPkDoc(int pkDoc) {
         this.pkDoc = pkDoc;
     }
 

@@ -1,8 +1,6 @@
 package com.hms.application.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @Description ToDo
@@ -15,7 +13,8 @@ import javax.persistence.Table;
 @Table(name = "info_report")
 public class infoReport {
     @Id
-    private String billId;     //单据号
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int billId;     //单据号
 
     private String userCode;    //用户编码
 
@@ -27,7 +26,7 @@ public class infoReport {
 
     private String reportDate;  //就诊日期
 
-    private String docName;     //医生姓名
+    private int pkDoc;     //医生pk
 
     private String reportMoney;//消费金额
 
@@ -35,11 +34,11 @@ public class infoReport {
 
     private String dm;           //删除标记
 
-    public String getBillId() {
+    public int getBillId() {
         return billId;
     }
 
-    public void setBillId(String billId) {
+    public void setBillId(int billId) {
         this.billId = billId;
     }
 
@@ -83,12 +82,12 @@ public class infoReport {
         this.reportDate = reportDate;
     }
 
-    public String getDocName() {
-        return docName;
+    public int getPkDoc() {
+        return pkDoc;
     }
 
-    public void setDocName(String docName) {
-        this.docName = docName;
+    public void setPkDoc(int pkDoc) {
+        this.pkDoc = pkDoc;
     }
 
     public String getReportMoney() {
