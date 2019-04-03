@@ -16,7 +16,7 @@ public class infoReport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int billId;     //单据号
 
-    private String userCode;    //用户编码
+    private int userCode;    //用户编码
 
     private String userName;    //用户姓名
 
@@ -42,11 +42,11 @@ public class infoReport {
         this.billId = billId;
     }
 
-    public String getUserCode() {
+    public int getUserCode() {
         return userCode;
     }
 
-    public void setUserCode(String userCode) {
+    public void setUserCode(int userCode) {
         this.userCode = userCode;
     }
 

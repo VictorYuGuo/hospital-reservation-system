@@ -33,7 +33,7 @@ public class UserController {
      * @param time
      * @return
      */
-    @PostMapping("/newuser")
+    @PostMapping("/new")
     public BaseResponse newUser(@Param(value = "wechat") String wechat, @Param(value = "type") String type, @Param(value = "time") String time) {
         String result = userService.createNewUser(wechat, type, time);
         if ("success".equals(result))
@@ -48,7 +48,7 @@ public class UserController {
      * @param wechat
      * @return
      */
-    @PostMapping("/finduser")
+    @PostMapping("/find")
     public BaseResponse findUser(@Param(value = "wechat") String wechat) {
         List<InfoUser> result = userService.findUser(wechat);
         BaseResponse baseResponse = new BaseResponse();
@@ -62,7 +62,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/updateuser")
+    @PostMapping("/update")
     public BaseResponse updateUser(@Param(value = "name") String name, @Param(value = "phone") String phone, @Param(value = "sex") String sex, @Param(value = "wechat") String wechat) {
         String result = userService.updateUser(name, phone, sex, wechat);
         return new BaseResponse();

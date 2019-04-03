@@ -10,11 +10,10 @@ import java.util.List;
  */
 public interface DoctorRepository extends JpaRepository<infoDoc,String> {
     //根据主键查找医生信息
-    List<infoDoc>findByPkDoc(String pkDoc);
+    List<infoDoc>findByPkDoc(int pkDoc);
     //根据医生类别查找医生信息
     List<infoDoc>findByDocTypeAndDm(String docType,String dm);
     //根据医生就诊科目模糊查询医生信息
     List<infoDoc>findByDocSubjectContainingAndDm(String docSubject,String dm);
-    //根据医生名查找医生信息，
 
 }

@@ -16,7 +16,7 @@ public class infoAppoint {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int appointId;       //表主键
 
-    private String userCode;        //用户编码
+    private int userCode;        //用户编码
 
     private String userName;        //用户姓名
 
@@ -30,7 +30,7 @@ public class infoAppoint {
 
     private String appointDate;     //预约日期
 
-    private String appointDoc;      //预约医师
+    private int appointDoc;      //预约医师pk
 
     private String appointInf;      //病情简述
 
@@ -46,11 +46,11 @@ public class infoAppoint {
         this.appointId = appointId;
     }
 
-    public String getUserCode() {
+    public int getUserCode() {
         return userCode;
     }
 
-    public void setUserCode(String userCode) {
+    public void setUserCode(int userCode) {
         this.userCode = userCode;
     }
 
@@ -102,11 +102,11 @@ public class infoAppoint {
         this.appointDate = appointDate;
     }
 
-    public String getAppointDoc() {
+    public int getAppointDoc() {
         return appointDoc;
     }
 
-    public void setAppointDoc(String appointDoc) {
+    public void setAppointDoc(int appointDoc) {
         this.appointDoc = appointDoc;
     }
 
