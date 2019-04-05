@@ -3,6 +3,7 @@ package com.hms.application.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @Description ToDo
@@ -15,7 +16,8 @@ import javax.persistence.Table;
 @Table(name = "info_workflow")
 public class infoWorkflow {
     @Id
-    private String billId;      //单据号
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int billId;      //单据号
 
     private String sendCode;    //发起流程的医生编号
 
@@ -27,11 +29,11 @@ public class infoWorkflow {
 
     private String dm;           //是否删除标志
 
-    public String getBillId() {
+    public int getBillId() {
         return billId;
     }
 
-    public void setBillId(String billId) {
+    public void setBillId(int billId) {
         this.billId = billId;
     }
 

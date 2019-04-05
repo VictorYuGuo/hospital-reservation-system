@@ -1,12 +1,11 @@
 package com.hms.application.controller;
 
+import com.hms.application.entity.infoAppoint;
 import com.hms.application.entity.infoDoc;
-import com.hms.application.errors.ErrorEnum;
 import com.hms.application.response.BaseResponse;
-import com.hms.application.service.DoctorService;
+import com.hms.application.service.DoctorLYFService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,9 +14,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/doctor")
-public class DoctorController {
+public class DoctorLYFController {
     @Autowired
-    DoctorService doctorService;
+    DoctorLYFService doctorService;
 
     /**
      * 用户登录验证，根据结果返回不同值
@@ -40,13 +39,14 @@ public class DoctorController {
      * @param phone
      * @return
      */
-    @PostMapping("/NPP")
-    public BaseResponse selectNPP(@Param(value ="phone")String phone){
-        List<infoDoc> NPP = doctorService.getdocNameAndpkDocAnddocPicture(phone);
+    @PostMapping("/doctorinfo")
+    public BaseResponse getdoctorinfo(@Param(value ="phone")String phone){
+        List<infoDoc> doctorinfo = doctorService.findByDocPhone(phone);
         BaseResponse baseResponse = new BaseResponse();
-        baseResponse.setData(NPP);
+        baseResponse.setData(doctorinfo);
         return baseResponse;
     }
+
 
 
 }

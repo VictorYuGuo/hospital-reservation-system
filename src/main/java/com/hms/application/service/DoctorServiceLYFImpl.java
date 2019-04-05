@@ -1,11 +1,13 @@
 package com.hms.application.service;
 
+import com.hms.application.entity.InfoUser;
 import com.hms.application.entity.infoDoc;
-import com.hms.application.repository.DoctorRepository;
+import com.hms.application.entity.infoAppoint;
+import com.hms.application.repository.DoctorLYFRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.validation.constraints.Null;
+import javax.sound.sampled.Line;
 import java.util.List;
 
 /**
@@ -14,9 +16,9 @@ import java.util.List;
  * @Date 2019/4/2 20:49
  **/
 @Service
-public class DoctorServiceImpl implements DoctorService{
+public class DoctorServiceLYFImpl implements DoctorLYFService {
     @Autowired
-    DoctorRepository doctorRepository;
+    DoctorLYFRepository doctorRepository;
 
     @Override
     public int checkDoctor(String docPhone, String docPassword) {
@@ -37,9 +39,17 @@ public class DoctorServiceImpl implements DoctorService{
     }
 
     @Override
+    public List<infoDoc> findByDocPhone(String docPhone){
+        List<infoDoc> docinfo = doctorRepository.findByDocPhone(docPhone);
+        return docinfo;
+    }
+
+ /*   @Override
     public List<infoDoc> getdocNameAndpkDocAnddocPicture(String docPhone) {
         List<infoDoc> docNPP = doctorRepository.findByDocPhone(docPhone);
         return docNPP;
     }
+    */
+
 
 }

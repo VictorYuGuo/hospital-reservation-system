@@ -24,7 +24,7 @@ public class infoDoc {
 
     private String docPassword;   //医生登录密码
 
-    private String docPicture;   //医生照片URL
+    private String docUrl;   //医生照片URL
 
     private String docEmail;    //医生邮箱
 
@@ -33,6 +33,8 @@ public class infoDoc {
     private String docType;     //医生类型
 
     private String docSubject;  //医生门诊科目
+
+    private String docClinic;   //医生所在诊所
 
     private String docMoney;    //医生预约费用
 
@@ -72,13 +74,13 @@ public class infoDoc {
         this.docPhone = docPhone;
     }
 
-    public String setDocPassword(){return docPassword;}
+    public String getDocPassword(){return docPassword;}
 
-    public void getDocPassword(String docPassword){this.docPassword = docPassword;}
+    public void setDocPassword(String docPassword){this.docPassword = docPassword;}
 
-    public String setDocPicture(){return docPicture;}
+    public String getDocUrl(){return docUrl;}
 
-    public void getDocPicture(String docPicture){this.docPicture = docPicture;}
+    public void setDocUrl(String docUrl){this.docUrl = docUrl;}
 
     public String getDocEmail() {
         return docEmail;
@@ -111,6 +113,10 @@ public class infoDoc {
     public void setDocSubject(String docSubject) {
         this.docSubject = docSubject;
     }
+
+    public  String getDocClinic(){return docClinic;}
+
+    public void setDocClinic(String docClinic) {this.docClinic = docClinic;}
 
     public String getDocMoney() {
         return docMoney;

@@ -3,6 +3,7 @@ package com.hms.application.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @Description ToDo
@@ -15,7 +16,8 @@ import javax.persistence.Table;
 @Table(name = "info_appoint")
 public class infoAppoint {
     @Id
-    private String appointId;       //表主键
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int appointId;       //表主键
 
     private String userCode;        //用户编码
 
@@ -31,7 +33,7 @@ public class infoAppoint {
 
     private String appointDate;     //预约日期
 
-    private String appointDoc;      //预约医师
+    private int appointDoc;      //预约医师
 
     private String appointInf;      //病情简述
 
@@ -39,11 +41,11 @@ public class infoAppoint {
 
     private String dm;               //是否取消标记
 
-    public String getAppointId() {
+    public int getAppointId() {
         return appointId;
     }
 
-    public void setAppointId(String appointId) {
+    public void setAppointId(int appointId) {
         this.appointId = appointId;
     }
 
@@ -103,11 +105,11 @@ public class infoAppoint {
         this.appointDate = appointDate;
     }
 
-    public String getAppointDoc() {
+    public int getAppointDoc() {
         return appointDoc;
     }
 
-    public void setAppointDoc(String appointDoc) {
+    public void setAppointDoc(int appointDoc) {
         this.appointDoc = appointDoc;
     }
 
