@@ -10,9 +10,11 @@ import java.util.List;
  */
 public interface ReportRepository extends JpaRepository<infoReport,String> {
     //根据用户编码查找就诊报告
-    List<infoReport>findByuserCode(int userCode);
+    List<infoReport>findByUserCode(int userCode);
     //根据就诊日期查找就诊报告
     List<infoReport>findByReportDate(String reportDate);
+    //根据用户编码和就诊日期查找就诊报告
+    List<infoReport>findByUserCodeAndReportDate(int userCode,String reportDate);
     //根据就诊日期查找未删除的就诊报告
-    List<infoReport>findByReportDateAndDm(String reportDate,String dm);
+    List<infoReport>findByUserCodeAndReportDateAndDm(int userCode,String reportDate,String dm);
 }

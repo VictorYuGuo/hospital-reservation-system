@@ -1,16 +1,21 @@
 package com.hms.application.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.hms.application.entity.InfoUser;
 import com.hms.application.errors.ErrorEnum;
+import com.hms.application.httpclient.AppInfo;
+import com.hms.application.httpclient.HttpClientUtil;
 import com.hms.application.response.BaseResponse;
 import com.hms.application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.SQLOutput;
 import java.util.List;
 
 /**
@@ -35,7 +40,18 @@ public class UserController {
      */
     @PostMapping("/new")
     public BaseResponse newUser(@Param(value = "wechat") String wechat, @Param(value = "type") String type, @Param(value = "time") String time) {
-        String result = userService.createNewUser(wechat, type, time);
+        String url = "https://api.weixin.qq.com/sns/jscode2session";
+        String jsonStr = "appid=" + AppInfo.appId + "&secret=" + AppInfo.appSecret + "&js_code=" + wechat + "&grant_type=authorization_code";
+        String httpOrgCreateTestRtn = HttpClientUtil.doPost(url, jsonStr, "utf-8");
+        JSONObject jsStr = JSONObject.parseObject(httpOrgCreateTestRtn);
+        String openId = jsStr.getString("openid");
+        System.out.println(jsStr);
+        List<InfoUser>users = userService.findUser(openId);
+        //若用户已经存在系统中，则直接返回请求成功
+        if(users.size()>0){
+            return new BaseResponse();
+        }
+        String result = userService.createNewUser(openId, type, time);
         if ("success".equals(result))
             return new BaseResponse();
         else
@@ -48,7 +64,7 @@ public class UserController {
      * @param wechat
      * @return
      */
-    @PostMapping("/find")
+    @GetMapping("/find")
     public BaseResponse findUser(@Param(value = "wechat") String wechat) {
         List<InfoUser> result = userService.findUser(wechat);
         BaseResponse baseResponse = new BaseResponse();
