@@ -29,7 +29,7 @@ public class infoReport {
 
     private String reportDate;  //就诊日期
 
-    private String docName;     //医生姓名
+    private int pkDoc;     //医生姓名
 
     private String reportMoney;//消费金额
 
@@ -85,12 +85,12 @@ public class infoReport {
         this.reportDate = reportDate;
     }
 
-    public String getDocName() {
-        return docName;
+    public int getpkDoc() {
+        return pkDoc;
     }
 
-    public void setDocName(String docName) {
-        this.docName = docName;
+    public void setpkDoc(int pkDoc) {
+        this.pkDoc = pkDoc;
     }
 
     public String getReportMoney() {
