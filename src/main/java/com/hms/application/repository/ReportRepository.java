@@ -17,4 +17,7 @@ public interface ReportRepository extends JpaRepository<infoReport,String> {
     List<infoReport>findByUserCodeAndReportDate(int userCode,String reportDate);
     //根据就诊日期查找未删除的就诊报告
     List<infoReport>findByUserCodeAndReportDateAndDm(int userCode,String reportDate,String dm);
+    //根据就诊日期模糊查找未删除的就诊报告
+    List<infoReport>findByUserCodeAndReportDateContainingAndDm(int userCode,String reportDate,String dm);
+
 }

@@ -47,9 +47,9 @@ public class UserController {
         String openId = jsStr.getString("openid");
         System.out.println(jsStr);
         List<InfoUser>users = userService.findUser(openId);
-        //若用户已经存在系统中，则直接返回请求成功
+        //若用户已经存在系统中，则直接返回请求成功,返回用户编码
         if(users.size()>0){
-            return new BaseResponse();
+            return new BaseResponse(users.get(0).getUserId());
         }
         String result = userService.createNewUser(openId, type, time);
         if ("success".equals(result))
