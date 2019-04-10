@@ -19,7 +19,7 @@ public class infoAppoint {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int appointId;       //表主键
 
-    private String userCode;        //用户编码
+    private int userCode;        //用户编码
 
     private String userName;        //用户姓名
 
@@ -41,6 +41,8 @@ public class infoAppoint {
 
     private String dm;               //是否取消标记
 
+    private String end;            //是否完成标记
+
     public int getAppointId() {
         return appointId;
     }
@@ -49,11 +51,11 @@ public class infoAppoint {
         this.appointId = appointId;
     }
 
-    public String getUserCode() {
+    public int getUserCode() {
         return userCode;
     }
 
-    public void setUserCode(String userCode) {
+    public void setUserCode(int userCode) {
         this.userCode = userCode;
     }
 
@@ -136,4 +138,8 @@ public class infoAppoint {
     public void setDm(String dm) {
         this.dm = dm;
     }
+
+    public String getEnd() {return end;}
+
+    public void setEnd(String end)  {this.end = end; }
 }

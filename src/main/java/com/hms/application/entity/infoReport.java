@@ -19,7 +19,9 @@ public class infoReport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int billId;     //单据号
 
-    private String userCode;    //用户编码
+    private int appointId;   //预约表ID
+
+    private int userCode;    //用户编码
 
     private String userName;    //用户姓名
 
@@ -30,6 +32,8 @@ public class infoReport {
     private String reportDate;  //就诊日期
 
     private int pkDoc;     //医生姓名
+
+    private String docName;
 
     private String reportMoney;//消费金额
 
@@ -45,11 +49,15 @@ public class infoReport {
         this.billId = billId;
     }
 
-    public String getUserCode() {
+    public int getAppointId()  { return appointId;}
+
+    public void setAppointId(int appointId) {this.appointId = appointId;}
+
+    public int getUserCode() {
         return userCode;
     }
 
-    public void setUserCode(String userCode) {
+    public void setUserCode(int userCode) {
         this.userCode = userCode;
     }
 
@@ -92,6 +100,10 @@ public class infoReport {
     public void setpkDoc(int pkDoc) {
         this.pkDoc = pkDoc;
     }
+
+    public String getDocName() {return docName;}
+
+    public void setDocName(String docName) {this.docName = docName;}
 
     public String getReportMoney() {
         return reportMoney;

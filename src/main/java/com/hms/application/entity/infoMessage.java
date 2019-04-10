@@ -18,11 +18,11 @@ public class infoMessage {
 
     private String mMessage;   //信息内容
 
-    private String mFromUserId;   //发送者ID
+    private int mFromUserId;   //发送者ID
 
     private String mFromUserStyle;   //发送者类型
 
-    private String mToUserId;    //接收者ID
+    private int mToUserId;    //接收者ID
 
     private String mToUserStyle;    //接收者类型
 
@@ -37,17 +37,17 @@ public class infoMessage {
 
     public void setmMessage(String mMessage) {this.mMessage = mMessage;}
 
-    public String getmFromUserId(){return mFromUserId;}
+    public int getmFromUserId(){return mFromUserId;}
 
-    public void setmFromUserId(String mFromUserId){this.mFromUserId = mFromUserId;}
+    public void setmFromUserId(int mFromUserId){this.mFromUserId = mFromUserId;}
 
     public String getmFromUserStyle(){return mFromUserStyle;}
 
     public void setmFromUserStyle(String mFromUserStyle){this.mFromUserStyle = mFromUserStyle;}
 
-    public String getmToUserId() {return mToUserId;}
+    public int getmToUserId() {return mToUserId;}
 
-    public void setmToUserId(String mToUserId){this.mToUserId = mToUserId;}
+    public void setmToUserId(int mToUserId){this.mToUserId = mToUserId;}
 
     public String getmToUserStyle(){return mToUserStyle;}
 
