@@ -41,4 +41,9 @@ public class UserServiceImpl implements UserService{
         List<InfoUser> users = userRepository.findByUserWechat(userWechat);
         return users;
     }
+
+    @Override
+    public InfoUser findByUserCode(int userCode) {
+        return userRepository.findByUserId(userCode);
+    }
 }

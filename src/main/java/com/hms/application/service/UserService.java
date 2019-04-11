@@ -14,4 +14,7 @@ public interface UserService {
 
     //通过用户微信id查询用户信息是否存在，存在则返回查找到的对象
     public List<InfoUser> findUser(String userWechat);
+
+    //通过用户编码查找
+    public InfoUser findByUserCode(int userCode);
 }

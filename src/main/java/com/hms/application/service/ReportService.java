@@ -12,6 +12,12 @@ public interface ReportService {
     public List<infoReport>findByUserCode(int userCode);
 
     /**
+     * 根据用户编码和删除标志查找当前用户所有就诊报告
+     * @return
+     */
+    public List<infoReport>findByUserCodeAndDm(int userCode,String dm);
+
+    /**
      * 根据用户编码和就诊日期查找就诊报告
      */
     public List<infoReport>findByUserCodeAndReportDate(int userCode,String reportDate);

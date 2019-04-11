@@ -24,6 +24,11 @@ public class ReportServiceImpl implements ReportService{
     }
 
     @Override
+    public List<infoReport> findByUserCodeAndDm(int userCode, String dm) {
+        return reportRepository.findByUserCodeAndDm(userCode,dm);
+    }
+
+    @Override
     public List<infoReport> findByUserCodeAndReportDate(int userCode, String reportDate) {
         return reportRepository.findByUserCodeAndReportDate(userCode,reportDate);
     }

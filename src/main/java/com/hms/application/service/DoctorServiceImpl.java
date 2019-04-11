@@ -19,12 +19,17 @@ public class DoctorServiceImpl implements DoctorService{
     DoctorRepository doctorRepository;
 
     @Override
-    public List<infoDoc> findbyPkDoc(int pkDoc) {
+    public infoDoc findbyPkDoc(int pkDoc) {
         return doctorRepository.findByPkDoc(pkDoc);
     }
 
     @Override
     public List<infoDoc> findAll() {
         return doctorRepository.findAll();
+    }
+
+    @Override
+    public List<String> findAllSubject() {
+        return doctorRepository.findAllSubject();
     }
 }

@@ -38,6 +38,8 @@ public class infoAppoint {
 
     private String dm;               //是否取消标记
 
+    private String end;              //预约是否完成诊疗标记
+
     public int getAppointId() {
         return appointId;
     }
@@ -132,5 +134,13 @@ public class infoAppoint {
 
     public void setDm(String dm) {
         this.dm = dm;
+    }
+
+    public String getEnd() {
+        return end;
+    }
+
+    public void setEnd(String end) {
+        this.end = end;
     }
 }

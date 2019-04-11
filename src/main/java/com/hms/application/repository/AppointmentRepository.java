@@ -13,14 +13,17 @@ import java.util.List;
  */
 public interface AppointmentRepository extends JpaRepository<infoAppoint,String> {
     //根据预约编号查找预约信息
-    List<infoAppoint>findByAppointId(int appointId);
+    infoAppoint findByAppointId(int appointId);
     //根据预约日期查找预约信息
     List<infoAppoint>findByAppointDate(String appointDate);
     //根据预约日期和是否删除标志查找预约信息
     List<infoAppoint>findByAppointDateAndDm(String appointDate,String dm);
     //根据预约医生和是否删除标志查找预约信息
     List<infoAppoint>findByAppointDocAndDm(int appointDoc,String dm);
-
+    //根据用户编码、日期、删除标记查找
+    List<infoAppoint>findByUserCodeAndAppointDateContainingAndDm(int userCode,String appointDate,String dm);
+    //根据用户编码和是否删除标记查找
+    List<infoAppoint>findByUserCodeAndDm(int userCode,String dm);
     //根据预约编号更新预约信息
     @Transactional
     @Modifying

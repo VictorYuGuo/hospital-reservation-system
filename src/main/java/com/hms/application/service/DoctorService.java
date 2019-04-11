@@ -8,10 +8,15 @@ public interface DoctorService {
     /**
      * 根据医生主键查找医生详细信息
      */
-    public List<infoDoc> findbyPkDoc(int pkDoc);
+    public infoDoc findbyPkDoc(int pkDoc);
 
     /**
      * 查找所有医生的信息
      */
     public List<infoDoc>findAll();
+
+    /**
+     * 查找所有科室
+     */
+    public List<String>findAllSubject();
 }

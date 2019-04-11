@@ -25,7 +25,7 @@ public class DoctorController {
 
     @GetMapping("/find")
     public BaseResponse getDoctor(@Param(value = "pkDoc")int pkDoc){
-        List<infoDoc>doctor = doctorService.findbyPkDoc(pkDoc);
+        infoDoc doctor = doctorService.findbyPkDoc(pkDoc);
         return new BaseResponse(doctor);
     }
 

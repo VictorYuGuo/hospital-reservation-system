@@ -17,7 +17,7 @@ public interface UserRepository extends JpaRepository<InfoUser, String> {
     List<InfoUser> findByUserWechat(String userWechat);
 
     //根据用户编码查找用户
-    List<InfoUser> findByUserId(int userID);
+    InfoUser findByUserId(int userID);
 
     //原生sql插入新记录
     @Transactional

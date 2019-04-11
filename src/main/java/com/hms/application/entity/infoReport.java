@@ -16,6 +16,8 @@ public class infoReport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int billId;     //单据号
 
+    private int appointId;  //预约表主键
+
     private int userCode;    //用户编码
 
     private String userName;    //用户姓名
@@ -40,6 +42,14 @@ public class infoReport {
 
     public void setBillId(int billId) {
         this.billId = billId;
+    }
+
+    public int getAppointId() {
+        return appointId;
+    }
+
+    public void setAppointId(int appointId) {
+        this.appointId = appointId;
     }
 
     public int getUserCode() {
