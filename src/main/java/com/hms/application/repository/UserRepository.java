@@ -28,7 +28,7 @@ public interface UserRepository extends JpaRepository<InfoUser, String> {
     //非原生sql根据微信openid更新信息
     @Transactional
     @Modifying
-    @Query(value = "Update InfoUser set userName = :userName , userPhone = :userPhone, userSex = :userSex where userWechat = :userWechat")
-    void updateNameAndPhoneAndSexByUserWechat(@Param(value = "userName") String userName, @Param(value = "userPhone") String userPhone, @Param(value = "userSex") String userSex, @Param(value = "userWechat") String userWechat);
+    @Query(value = "Update InfoUser set userName = :userName , userPhone = :userPhone, userSex = :userSex where userId = :userId")
+    void updateNameAndPhoneAndSexByUserWechat(@Param(value = "userName") String userName, @Param(value = "userPhone") String userPhone, @Param(value = "userSex") String userSex, @Param(value = "userId") int userId);
 
 }

@@ -61,26 +61,19 @@ public class UserController {
     /**
      * 通过查找用户判断用户是否存在在数据库里面，成功则返回查找到的用户对象，失败则返回错误信息
      *
-     * @param wechat
+     * @param userCode
      * @return
      */
     @GetMapping("/find")
-    public BaseResponse findUser(@Param(value = "wechat") String wechat) {
-        List<InfoUser> result = userService.findUser(wechat);
-        BaseResponse baseResponse = new BaseResponse();
-        if (result.size() > 0) {
-            baseResponse.setData(result);
-            return baseResponse;
-        } else {
-            baseResponse.setErrCode(ErrorEnum.OPERATION_FAIL.getErrCode());
-            baseResponse.setErrMsg(ErrorEnum.OPERATION_FAIL.getErrMsg());
-            return baseResponse;
-        }
+    public BaseResponse findUser(@Param(value = "userCode") int userCode) {
+        InfoUser result = userService.findByUserCode(userCode);
+//        BaseResponse baseResponse = new BaseResponse();
+        return new BaseResponse(result);
     }
 
     @PostMapping("/update")
-    public BaseResponse updateUser(@Param(value = "name") String name, @Param(value = "phone") String phone, @Param(value = "sex") String sex, @Param(value = "wechat") String wechat) {
-        String result = userService.updateUser(name, phone, sex, wechat);
+    public BaseResponse updateUser(@Param(value = "name") String name, @Param(value = "phone") String phone, @Param(value = "sex") String sex, @Param(value = "userCode") int userCode) {
+        String result = userService.updateUser(name, phone, sex, userCode);
         return new BaseResponse();
     }
 

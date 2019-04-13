@@ -31,8 +31,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public String updateUser(String userName, String userPhone, String userSex, String userWechat) {
-        userRepository.updateNameAndPhoneAndSexByUserWechat(userName,userPhone,userSex,userWechat);
+    public String updateUser(String userName, String userPhone, String userSex, int userId) {
+        userRepository.updateNameAndPhoneAndSexByUserWechat(userName,userPhone,userSex,userId);
         return "success";
     }
 
