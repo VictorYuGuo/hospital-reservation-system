@@ -26,5 +26,17 @@ public class MessageLYFServiceImpl implements MessageLYFService{
         return messageinfo;
     }
 
+    @Override
+    public List<infoMessage> selectmes(int pkDoc,int pkUser) {
+        List<infoMessage> messageinfo = messageRepository.selectmes(pkDoc,pkUser);
+        return messageinfo;
+    }
+
+    @Override
+    public String changestatus(int pkDoc,int pkUser) {
+        messageRepository.changestatus(pkDoc,pkUser);
+        return "success";
+    }
+
 
 }

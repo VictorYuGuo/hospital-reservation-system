@@ -33,4 +33,33 @@ public class MessageLYFController {
         baseResponse.setData(messageinfo);
         return baseResponse;
     }
+
+    /**
+     * 用户用pkdoc请求预约信息
+     * *
+     * @param pkdoc
+     * @param pkuser
+     * @return
+     */
+    @PostMapping("/mesinfo")
+    public BaseResponse getmesinfo(@Param(value ="pkdoc")int pkdoc,@Param(value = "pkuser")int pkuser){
+        List<infoMessage> messageinfo = messageService.selectmes(pkdoc,pkuser);
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setData(messageinfo);
+        return baseResponse;
+    }
+
+    /**
+     * 用户用pkdoc请求预约信息
+     * *
+     * @param pkdoc
+     * @param pkuser
+     * @return
+     */
+    @PostMapping("/changestatus")
+    public BaseResponse changestatus(@Param(value ="pkdoc")int pkdoc,@Param(value = "pkuser")int pkuser){
+        String result = messageService.changestatus(pkdoc,pkuser);
+        return  new BaseResponse();
+    }
+
 }
