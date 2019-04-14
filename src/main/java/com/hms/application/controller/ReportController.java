@@ -48,7 +48,7 @@ public class ReportController {
         for(int i=0;i<reports.size();i++){
             infoReport report = reports.get(i);
             infoAppoint appoint = appointService.findByAppiontId(report.getAppointId());
-            infoDoc doctor = doctorService.findbyPkDoc(report.getPkDoc());
+            infoDoc doctor = doctorService.findbyPkDoc(report.getpkDoc());
             ReportHistory reportHistory = new ReportHistory();
             reportHistory.setBillId(report.getBillId());
             reportHistory.setDocName(doctor.getDocName());
@@ -75,7 +75,7 @@ public class ReportController {
         infoReport report = new infoReport();
         report = reports.get(0);
         //根据报告中的医生pk获取医生的姓名和照片url
-        infoDoc doctor = doctorService.findbyPkDoc(report.getPkDoc());
+        infoDoc doctor = doctorService.findbyPkDoc(report.getpkDoc());
         ReportResult reportResult = new ReportResult();
         reportResult.setSubject(report.getReportSubject());//获取科室
         reportResult.setReportResult(report.getReportResult());//获取检查报告结果

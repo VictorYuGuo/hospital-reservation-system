@@ -130,8 +130,15 @@ public class WebSocket {
     private void sendToUser(String message) {
         infoMessage infoMessage = JSON.parseObject(message, com.hms.application.entity.infoMessage.class);
         try {
-            if (webSocketMap.get(infoMessage.getmToUserId()) != null) {
-                webSocketMap.get(infoMessage.getmToUserId()).sendMessage(message);
+            int id;
+            if("0".equals(infoMessage.getmFromUserStyle())){
+                id = infoMessage.getpkUser();
+            }
+            else{
+                id = infoMessage.getpkDoc();
+            }
+            if (webSocketMap.get(id) != null) {
+                webSocketMap.get(id).sendMessage(message);
             } else {
                 System.out.println("当前用户不在线");
             }
