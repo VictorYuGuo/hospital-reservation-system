@@ -18,15 +18,21 @@ public class infoMessage {
 
     private String mMessage;   //信息内容
 
-    private String mFromUserId;   //发送者ID
+    private int pkDoc;   //医生ID
+
+    private String docName;   //医生姓名
 
     private String mFromUserStyle;   //发送者类型
 
-    private String mToUserId;    //接收者ID
+    private int pkUser;    //用户ID
+
+    private String userName;    //病人姓名
 
     private String mToUserStyle;    //接收者类型
 
     private String mStatus;   //接收状态
+
+    private String mTime;    //发送时间
 
 
     public int getmId(){return mId;}
@@ -37,17 +43,25 @@ public class infoMessage {
 
     public void setmMessage(String mMessage) {this.mMessage = mMessage;}
 
-    public String getmFromUserId(){return mFromUserId;}
+    public int getpkDoc(){return pkDoc;}
 
-    public void setmFromUserId(String mFromUserId){this.mFromUserId = mFromUserId;}
+    public void setpkDoc(int pkDoc){this.pkDoc=pkDoc;}
+
+    public String getDocName() {return docName;}
+
+    public void setDocName(String docName){this.docName=docName;}
 
     public String getmFromUserStyle(){return mFromUserStyle;}
 
     public void setmFromUserStyle(String mFromUserStyle){this.mFromUserStyle = mFromUserStyle;}
 
-    public String getmToUserId() {return mToUserId;}
+    public int getpkUser() {return pkUser;}
 
-    public void setmToUserId(String mToUserId){this.mToUserId = mToUserId;}
+    public void setpkUser(int pkUser){this.pkUser = pkUser;}
+
+    public String getUserName(){return userName;}
+
+    public void setUserName(String userName){this.userName=userName;}
 
     public String getmToUserStyle(){return mToUserStyle;}
 
@@ -56,4 +70,8 @@ public class infoMessage {
     public String getmStatus(){return mStatus;}
 
     public void setmStatus(String mStatus){this.mStatus = mStatus;}
+
+    public String getmTime(){return mTime;}
+
+    public void setmTime(String mTime){this.mTime = mTime;}
 }

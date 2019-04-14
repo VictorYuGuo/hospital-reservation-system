@@ -1,5 +1,8 @@
 package com.hms.application.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.*;
 
 /**
@@ -16,7 +19,7 @@ public class infoReport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int billId;     //单据号
 
-    private int appointId;  //预约表主键
+    private int appointId;   //预约表ID
 
     private int userCode;    //用户编码
 
@@ -28,7 +31,9 @@ public class infoReport {
 
     private String reportDate;  //就诊日期
 
-    private int pkDoc;     //医生pk
+    private int pkDoc;     //医生姓名
+
+    private String docName;
 
     private String reportMoney;//消费金额
 
@@ -44,13 +49,9 @@ public class infoReport {
         this.billId = billId;
     }
 
-    public int getAppointId() {
-        return appointId;
-    }
+    public int getAppointId()  { return appointId;}
 
-    public void setAppointId(int appointId) {
-        this.appointId = appointId;
-    }
+    public void setAppointId(int appointId) {this.appointId = appointId;}
 
     public int getUserCode() {
         return userCode;
@@ -92,13 +93,17 @@ public class infoReport {
         this.reportDate = reportDate;
     }
 
-    public int getPkDoc() {
+    public int getpkDoc() {
         return pkDoc;
     }
 
-    public void setPkDoc(int pkDoc) {
+    public void setpkDoc(int pkDoc) {
         this.pkDoc = pkDoc;
     }
+
+    public String getDocName() {return docName;}
+
+    public void setDocName(String docName) {this.docName = docName;}
 
     public String getReportMoney() {
         return reportMoney;
