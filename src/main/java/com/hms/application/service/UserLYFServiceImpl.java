@@ -25,4 +25,8 @@ public class UserLYFServiceImpl implements UserLYFService{
         List<Object[]> userinfo = userRepository.selectuserinfo(userId);
         return userinfo;
     }
+    @Override
+    public InfoUser findByUserId(int userId) {
+        return userRepository.findByUserId(userId);
+    }
 }

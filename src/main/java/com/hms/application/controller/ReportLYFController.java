@@ -64,5 +64,21 @@ public class ReportLYFController {
         baseResponse.setData(reportinfo);
         return baseResponse;
     }
+    /**
+     * 用户用usercode和reportDate请求预约信息
+     * *
+     * @param usercode
+     * @return
+     */
+    @PostMapping("/allreportdate")
+    public BaseResponse allreportdate(@Param(value = "usercode")int usercode)
+    {
+        List<infoReport> reportinfo = reportService.selectallreport(usercode);
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setData(reportinfo);
+        return baseResponse;
+    }
+
+
 
 }

@@ -52,4 +52,10 @@ public class ReportLYFServiceImpl implements ReportLYFService{
         List<infoReport> reportinfo = reportRepository.selectreport(userCode,reportDate);
         return reportinfo;
     }
+    @Override
+    public List<infoReport> selectallreport(int userCode)
+    {
+        List<infoReport> reportinfo = reportRepository.selectallreport(userCode);
+        return reportinfo;
+    }
 }
