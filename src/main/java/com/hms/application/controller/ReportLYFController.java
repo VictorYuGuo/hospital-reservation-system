@@ -54,12 +54,13 @@ public class ReportLYFController {
      * *
      * @param usercode
      * @param reportdate
+     * *@param docname
      * @return
      */
     @PostMapping("/reportdate")
-    public BaseResponse reportdate(@Param(value = "usercode")int usercode,@Param(value = "reportdate")String reportdate)
+    public BaseResponse reportdate(@Param(value = "usercode")int usercode,@Param(value = "reportdate")String reportdate,@Param(value = "docname")String docname)
     {
-        List<infoReport> reportinfo = reportService.selectreport(usercode,reportdate);
+        List<infoReport> reportinfo = reportService.selectreport(usercode,reportdate,docname);
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setData(reportinfo);
         return baseResponse;

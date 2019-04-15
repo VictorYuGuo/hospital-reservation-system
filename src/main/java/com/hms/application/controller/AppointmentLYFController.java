@@ -52,11 +52,27 @@ public class AppointmentLYFController {
      * *
      * @param username
      * @param appointdate
+     * @param appointdoc
      * @return
      */
     @PostMapping("/appointuserinfo")
-    public BaseResponse getappointdateinfo(@Param(value ="username")String username,@Param(value = "appointdate")String appointdate){
-        List<infoAppoint> appointinfo = appointmentService.selectappoint(username,appointdate);
+    public BaseResponse getappointdateinfo(@Param(value ="username")String username,@Param(value = "appointdate")String appointdate,@Param(value = "appointdoc")int appointdoc){
+        List<infoAppoint> appointinfo = appointmentService.selectappoint(username,appointdate,appointdoc);
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setData(appointinfo);
+        return baseResponse;
+    }
+
+    /**
+     * 用户用userName和appointDate请求预约信息
+     * *
+     * @param username
+     * @param appointdoc
+     * @return
+     */
+    @PostMapping("/appointnameinfo")
+    public BaseResponse getnamedateinfo(@Param(value ="username")String username,@Param(value = "appointdoc")int appointdoc){
+        List<infoAppoint> appointinfo = appointmentService.selectnameinfo(username,appointdoc);
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setData(appointinfo);
         return baseResponse;
