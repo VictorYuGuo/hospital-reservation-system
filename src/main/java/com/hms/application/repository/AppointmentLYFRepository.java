@@ -20,12 +20,12 @@ public interface AppointmentLYFRepository extends JpaRepository<infoAppoint,Stri
 
     @Transactional
     @Modifying
-    @Query(value = "Select * From info_appoint WHERE user_name =:userName AND appoint_date LIKE :appointDate%",nativeQuery = true)
+    @Query(value = "Select * From info_appoint WHERE user_name =:userName AND appoint_date LIKE :appointDate% and dm=0",nativeQuery = true)
     List<infoAppoint> selectappoint(@Param(value = "userName") String userName,@Param(value = "appointDate") String appointDate);
 
     @Transactional
     @Modifying
-    @Query(value = "Update info_appoint set end = :end where appoint_id = :appointId",nativeQuery = true)
+    @Query(value = "Update info_appoint set end = :end where appoint_id = :appointId and dm=0",nativeQuery = true)
     void updateEnd(@Param(value = "appointId")int appointId,@Param(value = "end") String end);
 
 

@@ -24,6 +24,6 @@ public interface ReportLYFRepository extends JpaRepository<infoReport,String>{
 
     @Transactional
     @Modifying
-    @Query(value = "Select * From info_report WHERE user_code =:userCode",nativeQuery = true)
+    @Query(value = "Select * From info_report WHERE user_code =:userCode and dm=0 ",nativeQuery = true)
     List<infoReport> selectallreport(@Param(value = "userCode")int userCode);
 }
