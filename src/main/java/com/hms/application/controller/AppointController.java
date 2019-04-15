@@ -47,22 +47,28 @@ public class AppointController {
                                    @Param(value = "pkDoc")int pkDoc,
                                    @Param(value = "subject")String subject,
                                    @Param(value = "appointInfo")String appointInfo){
-        InfoUser user = userService.findByUserCode(userCode);
-        infoAppoint infoAppoint = new infoAppoint();
-        infoAppoint.setUserCode(userCode);
-        infoAppoint.setUserName(user.getUserName());
-        infoAppoint.setUserType(user.getUserType());
-        infoAppoint.setUserPhone(user.getUserPhone());
-        infoAppoint.setCreationTime(creationTime);
-        infoAppoint.setAppointClinic(clinic);
-        infoAppoint.setAppointDate(appointDate);
-        infoAppoint.setAppointDoc(pkDoc);
-        infoAppoint.setAppointType(subject);
-        infoAppoint.setAppointInf(appointInfo);
-        infoAppoint.setDm("0");
-        infoAppoint.setEnd("0");
-        appointService.insert(infoAppoint);
-        return new BaseResponse();
+        List<infoAppoint>appoints = appointService.findByUserCodeAndDateAndDmAndEnd(userCode,appointDate,"0","0");
+        if(appoints.size()>0){
+            return new BaseResponse("fail");
+        }
+        else {
+            InfoUser user = userService.findByUserCode(userCode);
+            infoAppoint infoAppoint = new infoAppoint();
+            infoAppoint.setUserCode(userCode);
+            infoAppoint.setUserName(user.getUserName());
+            infoAppoint.setUserType(user.getUserType());
+            infoAppoint.setUserPhone(user.getUserPhone());
+            infoAppoint.setCreationTime(creationTime);
+            infoAppoint.setAppointClinic(clinic);
+            infoAppoint.setAppointDate(appointDate);
+            infoAppoint.setAppointDoc(pkDoc);
+            infoAppoint.setAppointType(subject);
+            infoAppoint.setAppointInf(appointInfo);
+            infoAppoint.setDm("0");
+            infoAppoint.setEnd("0");
+            appointService.insert(infoAppoint);
+            return new BaseResponse("success");
+        }
     }
 
     @GetMapping("/find/type=userCode&date&dm")

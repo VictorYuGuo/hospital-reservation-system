@@ -86,4 +86,10 @@ public class ReportController {
         return new BaseResponse(reportResult);
     }
 
+    @GetMapping("/get/money")
+    public BaseResponse getConsumeHistory(@Param(value = "userCode")int userCode,@Param(value = "dm")String dm){
+        List<infoReport> reports = reportService.findByUserCodeAndDm(userCode,dm);
+        return new BaseResponse(reports);
+    }
+
 }
