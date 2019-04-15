@@ -20,8 +20,17 @@ public interface AppointmentLYFRepository extends JpaRepository<infoAppoint,Stri
 
     @Transactional
     @Modifying
-    @Query(value = "Select * From info_appoint WHERE user_name =:userName AND appoint_date LIKE :appointDate% and dm=0",nativeQuery = true)
-    List<infoAppoint> selectappoint(@Param(value = "userName") String userName,@Param(value = "appointDate") String appointDate);
+    @Query(value = "Select * From info_appoint WHERE user_name =:userName AND appoint_date LIKE :appointDate% and dm=0 and appoint_doc=:appointDoc",nativeQuery = true)
+    List<infoAppoint> selectappoint(@Param(value = "userName") String userName,
+                                    @Param(value = "appointDate") String appointDate,
+                                    @Param(value = "appointDoc") int appointDoc);
+
+    @Transactional
+    @Modifying
+    @Query(value = "Select * From info_appoint WHERE user_name LIKE :userName% and dm=0 and appoint_doc=:appointDoc",nativeQuery = true)
+    List<infoAppoint> selectnameinfo(@Param(value = "userName") String userName,
+
+                                    @Param(value = "appointDoc") int appointDoc);
 
     @Transactional
     @Modifying

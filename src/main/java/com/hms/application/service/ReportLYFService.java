@@ -11,7 +11,7 @@ public interface ReportLYFService {
                                  String reportResult,String reportMoney,
                                   String reportDate,String creationTime,String dm);
 
-    public List<infoReport> selectreport(int userCode,String reportDate);
+    public List<infoReport> selectreport(int userCode,String reportDate,String docName);
 
     public List<infoReport> selectallreport(int userCode);
 }

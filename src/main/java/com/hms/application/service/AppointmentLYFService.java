@@ -10,7 +10,9 @@ public interface AppointmentLYFService {
 
     public List<infoAppoint> selectNNP(int appointDoc,String appointDate);
 
-    public List<infoAppoint> selectappoint(String userName,String appointDate);
+    public List<infoAppoint> selectappoint(String userName,String appointDate,int appointDoc);
+
+    public List<infoAppoint> selectnameinfo(String userName,int appointDoc);
 
     public String updateEnd(int appointId,String end);
 }

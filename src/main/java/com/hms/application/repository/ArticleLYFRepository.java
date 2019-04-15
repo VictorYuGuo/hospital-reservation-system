@@ -13,12 +13,12 @@ public interface ArticleLYFRepository extends JpaRepository<infoArticle,String> 
 
     @Transactional
     @Modifying
-    @Query(value = "Select * From info_article WHERE pk_article>3 and pk_article <7",nativeQuery = true)
+    @Query(value = "Select * From info_article WHERE pk_article<4 ",nativeQuery = true)
     List<infoArticle> selectpic();
 
     @Transactional
     @Modifying
-    @Query(value = "Select * From info_article WHERE pk_article>6",nativeQuery = true)
+    @Query(value = "Select * From info_article WHERE pk_article",nativeQuery = true)
     List<infoArticle> selectart();
 
     @Transactional
