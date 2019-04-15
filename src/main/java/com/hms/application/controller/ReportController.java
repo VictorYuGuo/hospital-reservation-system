@@ -51,10 +51,12 @@ public class ReportController {
             infoDoc doctor = doctorService.findbyPkDoc(report.getpkDoc());
             ReportHistory reportHistory = new ReportHistory();
             reportHistory.setBillId(report.getBillId());
+            reportHistory.setDocUrl(doctor.getDocUrl());
             reportHistory.setDocName(doctor.getDocName());
             reportHistory.setClinic(appoint.getAppointClinic());
             reportHistory.setReportDate(report.getReportDate());
             reportHistory.setSubject(report.getReportSubject());
+            reportHistory.setResult(report.getReportResult());
             histories.add(reportHistory);
         }
         return new BaseResponse(histories);

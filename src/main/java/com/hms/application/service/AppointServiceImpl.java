@@ -33,7 +33,17 @@ public class AppointServiceImpl implements AppointService{
     }
 
     @Override
+    public List<infoAppoint> findByUserCodeAndDateAndDmAndEnd(int userCode, String date, String dm, String end) {
+        return appointmentRepository.findByUserCodeAndAppointDateContainingAndDmAndEnd(userCode,date,dm,end);
+    }
+
+    @Override
     public List<infoAppoint> findByUserCodeAndDm(int userCode, String dm) {
         return appointmentRepository.findByUserCodeAndDm(userCode,dm);
+    }
+
+    @Override
+    public void deleteAppoint(String appointDate, int userCode) {
+        appointmentRepository.deleteAppoint(appointDate,userCode);
     }
 }

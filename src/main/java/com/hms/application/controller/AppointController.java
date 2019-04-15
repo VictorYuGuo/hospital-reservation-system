@@ -67,15 +67,21 @@ public class AppointController {
 
     @GetMapping("/find/type=userCode&date&dm")
     public BaseResponse findByUserCodeAndDateAndDm(@Param(value = "userCode")int userCode,@Param(value = "date")String date,@Param(value = "dm")String dm){
-        List<infoAppoint>appoints = appointService.findByUserCodeAndDateAndDm(userCode,date,dm);
-        infoAppoint appoint =appoints.get(0);
-        infoDoc doctor = doctorService.findbyPkDoc(appoint.getAppointDoc());
-        CurrentAppointment currentAppointment = new CurrentAppointment();
-        currentAppointment.setAppointClinic(appoint.getAppointClinic());
-        currentAppointment.setAppointDate(appoint.getAppointDate());
-        currentAppointment.setAppointType(appoint.getAppointType());
-        currentAppointment.setDocName(doctor.getDocName());
-        return new BaseResponse(currentAppointment);
+//        List<infoAppoint>appoints = appointService.findByUserCodeAndDateAndDm(userCode,date,dm);
+        List<infoAppoint>appoints = appointService.findByUserCodeAndDateAndDmAndEnd(userCode,date,dm,"0");
+        if(appoints.size()>0) {
+            infoAppoint appoint = appoints.get(0);
+            infoDoc doctor = doctorService.findbyPkDoc(appoint.getAppointDoc());
+            CurrentAppointment currentAppointment = new CurrentAppointment();
+            currentAppointment.setAppointClinic(appoint.getAppointClinic());
+            currentAppointment.setAppointDate(appoint.getAppointDate());
+            currentAppointment.setAppointType(appoint.getAppointType());
+            currentAppointment.setDocName(doctor.getDocName());
+            return new BaseResponse(currentAppointment);
+        }
+        else{
+            return new BaseResponse();
+        }
     }
 
     @GetMapping("/find/type=userCode&dm")
@@ -108,5 +114,11 @@ public class AppointController {
         subjectDoctor.setDoctors(doctors);
         subjectDoctor.setSubjects(returnSubjects);
         return new BaseResponse(subjectDoctor);
+    }
+
+    @PostMapping("/delete")
+    public BaseResponse deleteAppoint(@Param(value = "appointDate")String appointDate,@Param(value = "userCode")int userCode){
+        appointService.deleteAppoint(appointDate,userCode);
+        return new BaseResponse();
     }
 }

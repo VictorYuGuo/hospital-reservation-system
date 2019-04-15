@@ -26,6 +26,8 @@ public class Clinic {
 
     private String dm;                                        // 分诊所删除标记
 
+    private String clinicImg;                                //分诊所照片
+
     public Integer getClinicId() {
         return clinicId;
     }
@@ -72,5 +74,13 @@ public class Clinic {
 
     public void setDm(String dm) {
         this.dm = dm;
+    }
+
+    public String getClinicImg() {
+        return clinicImg;
+    }
+
+    public void setClinicImg(String clinicImg) {
+        this.clinicImg = clinicImg;
     }
 }

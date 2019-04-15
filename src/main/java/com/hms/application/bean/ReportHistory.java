@@ -16,7 +16,11 @@ public class ReportHistory {
 
     private String docName;
 
+    private String docUrl;
+
     private int billId;
+
+    private String result;
 
     public String getReportDate() {
         return reportDate;
@@ -50,11 +54,27 @@ public class ReportHistory {
         this.docName = docName;
     }
 
+    public String getDocUrl() {
+        return docUrl;
+    }
+
+    public void setDocUrl(String docUrl) {
+        this.docUrl = docUrl;
+    }
+
     public int getBillId() {
         return billId;
     }
 
     public void setBillId(int billId) {
         this.billId = billId;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
     }
 }

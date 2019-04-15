@@ -1,6 +1,7 @@
 package com.hms.application.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.hms.application.entity.infoMessage;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
@@ -128,14 +129,21 @@ public class WebSocket {
      * @param message
      */
     private void sendToUser(String message) {
-        infoMessage infoMessage = JSON.parseObject(message, com.hms.application.entity.infoMessage.class);
+//        infoMessage infoMessage = JSON.parseObject(message, com.hms.application.entity.infoMessage.class);
+        JSONObject object = JSON.parseObject(message);
         try {
             int id;
-            if("0".equals(infoMessage.getmFromUserStyle())){
-                id = infoMessage.getpkUser();
+//            if("0".equals(infoMessage.getmFromUserStyle())){
+//                id = infoMessage.getpkUser();
+//            }
+//            else{
+//                id = infoMessage.getpkDoc();
+//            }
+            if("0".equals(object.get("mFromUserStyle"))){
+                id = object.getIntValue("pkUser");
             }
             else{
-                id = infoMessage.getpkDoc();
+                id = object.getIntValue("pkDoc");
             }
             if (webSocketMap.get(id) != null) {
                 webSocketMap.get(id).sendMessage(message);

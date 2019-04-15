@@ -24,10 +24,18 @@ public interface AppointService {
     public List<infoAppoint> findByUserCodeAndDateAndDm(int userCode,String date,String dm);
 
     /**
+     * 根据用户编码、日期、删除标记、是否完成标志查找记录
+     * @return
+     */
+    public List<infoAppoint> findByUserCodeAndDateAndDmAndEnd(int userCode,String date,String dm,String end);
+
+    /**
      * 根据用户编码和是否删除标记查找记录
      * @param userCode
      * @param dm
      * @return
      */
     public List<infoAppoint> findByUserCodeAndDm(int userCode,String dm);
+
+    public void deleteAppoint(String appointDate,int userCode);
 }
