@@ -15,4 +15,7 @@ public interface UserLYFRepository extends JpaRepository<InfoUser,String>{
     @Modifying
     @Query(value = "Select user_id,user_name From info_user WHERE user_id =:userId",nativeQuery = true)
     List<Object[]> selectuserinfo(@Param(value = "userId") int userId);
+
+    //根据用户编码查找就诊报告
+    InfoUser findByUserId(int userId);
 }

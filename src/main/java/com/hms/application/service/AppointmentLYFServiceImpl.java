@@ -33,10 +33,16 @@ public class AppointmentLYFServiceImpl implements AppointmentLYFService{
     }
 
     @Override
-    public List<infoAppoint> selectappoint(String userName,String appointDate){
-        List<infoAppoint> appointinfo = appointmentRepository.selectappoint(userName,appointDate);
+    public List<infoAppoint> selectappoint(String userName,String appointDate,int appointDoc){
+        List<infoAppoint> appointinfo = appointmentRepository.selectappoint(userName,appointDate,appointDoc);
         return appointinfo;
     }
+    @Override
+    public List<infoAppoint> selectnameinfo(String userName,int appointDoc){
+        List<infoAppoint> appointinfo = appointmentRepository.selectnameinfo(userName,appointDoc);
+        return appointinfo;
+    }
+
     @Override
     public String updateEnd(int appointId,String end)
     {
