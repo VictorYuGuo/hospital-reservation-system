@@ -25,7 +25,7 @@ public class ArticleController {
 
     @GetMapping(value = "/find")
     public BaseResponse findAll(){
-        List<infoArticle> articles = articleService.findAll();
+        List<infoArticle> articles = articleService.findByDm("0");
         return new BaseResponse(articles);
     }
 }

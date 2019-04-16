@@ -21,4 +21,9 @@ public class ArticleServiceImpl implements ArticleService{
     public List<infoArticle> findAll() {
         return articleRepository.findAll();
     }
+
+    @Override
+    public List<infoArticle> findByDm(String dm) {
+        return articleRepository.findByDm(dm);
+    }
 }

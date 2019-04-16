@@ -3,9 +3,14 @@ package com.hms.application.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.hms.application.entity.infoMessage;
+import com.hms.application.service.MessageService;
+import com.hms.application.service.MessageServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.ContextLoader;
 
+import javax.annotation.Resource;
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
@@ -17,7 +22,8 @@ import java.util.concurrent.CopyOnWriteArraySet;
 @ServerEndpoint(value = "/websocket/{code}")
 @Component
 public class WebSocket {
-    //静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
+    public static MessageService messageService;
+    //静态变量，用来记录当前在线连接数。把它设计成线程安全的。
     private static int onlineCount = 0;
 
     //concurrent包的线程安全Set，用来存放每个客户端对应的MyWebSocket对象。
@@ -41,12 +47,12 @@ public class WebSocket {
         webSocketMap.put(code,this);
         webSocketSet.add(this);     //加入set中
         addOnlineCount();           //在线数加1
-        System.out.println("有新连接加入！当前在线人数为" + getOnlineCount());
-        try {
-            sendMessage("Hello world");
-        } catch (IOException e) {
-            System.out.println("IO异常");
-        }
+        System.out.println("有新连接加入！当前在线人数为" + getOnlineCount()+"，连接的用户编码为"+userId);
+//        try {
+//            sendMessage("连接成功");
+//        } catch (IOException e) {
+//            System.out.println("IO异常");
+//        }
     }
 
     /**
@@ -58,7 +64,7 @@ public class WebSocket {
         webSocketSet.remove(this);  //从set中删除
         webSocketMap.remove(userId);   //从map中删除
         subOnlineCount();           //在线数减1
-        System.out.println("有一连接关闭！当前在线人数为" + getOnlineCount());
+        System.out.println("有一连接关闭！当前在线人数为" + getOnlineCount()+"，断开连接的用户编码为"+userId);
     }
 
     /**
@@ -131,23 +137,31 @@ public class WebSocket {
     private void sendToUser(String message) {
 //        infoMessage infoMessage = JSON.parseObject(message, com.hms.application.entity.infoMessage.class);
         JSONObject object = JSON.parseObject(message);
+
         try {
             int id;
-//            if("0".equals(infoMessage.getmFromUserStyle())){
-//                id = infoMessage.getpkUser();
-//            }
-//            else{
-//                id = infoMessage.getpkDoc();
-//            }
+
             if("0".equals(object.get("mFromUserStyle"))){
                 id = object.getIntValue("pkUser");
             }
             else{
                 id = object.getIntValue("pkDoc");
             }
+            //先把 消息保存进数据库
+            infoMessage newMessage = new infoMessage();
+            newMessage.setpkUser(object.getIntValue("pkUser"));//从消息中提取pkUser
+            newMessage.setpkDoc(object.getIntValue("pkDoc"));//从消息中提取pkDoc
+            newMessage.setmFromUserStyle(object.getString("mFromUserStyle"));//从消息中提取消息来源
+            newMessage.setmToUserStyle(object.getString("mToUserStyle"));//从消息中提取消息去向
+            newMessage.setmMessage(object.getString("mMessage"));
+            newMessage.setmTime(object.getString("mTime"));
+            messageService.insert(newMessage);
+            //如果消息去向在线，则直接将消息推送过去
             if (webSocketMap.get(id) != null) {
                 webSocketMap.get(id).sendMessage(message);
-            } else {
+            }
+            //如果不在线，则不推送，并且控制台输出不在线提示
+            else {
                 System.out.println("当前用户不在线");
             }
         } catch (IOException e) {

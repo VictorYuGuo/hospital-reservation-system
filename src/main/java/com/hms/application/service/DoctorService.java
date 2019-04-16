@@ -16,6 +16,11 @@ public interface DoctorService {
     public List<infoDoc>findAll();
 
     /**
+     * 根据删除标志查找医生信息
+     */
+    public List<infoDoc>findByDm(String dm);
+
+    /**
      * 查找所有科室
      */
     public List<String>findAllSubject();

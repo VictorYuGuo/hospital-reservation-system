@@ -23,7 +23,8 @@ public class ClinicController {
 
     @GetMapping("/find")
     public BaseResponse findAll(){
-        List<Clinic> clinics = clinicService.findAll();
+        //根据删除标志查找未删除的诊所信息
+        List<Clinic> clinics = clinicService.findByDm("0");
         return new BaseResponse(clinics);
     }
 }

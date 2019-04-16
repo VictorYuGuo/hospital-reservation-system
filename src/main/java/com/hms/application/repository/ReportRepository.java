@@ -2,6 +2,9 @@ package com.hms.application.repository;
 
 import com.hms.application.entity.infoReport;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,6 +23,9 @@ public interface ReportRepository extends JpaRepository<infoReport,String> {
     //根据就诊日期查找未删除的就诊报告
     List<infoReport>findByUserCodeAndReportDateAndDm(int userCode,String reportDate,String dm);
     //根据就诊日期模糊查找未删除的就诊报告
+//    List<infoReport>findByUserCodeAndReportDateContainingAndDm(int userCode,String reportDate,String dm);
+    @Transactional
+    @Modifying
+    @Query(value = "select *from info_report where user_code=?1 and report_date like concat('%',?2,'%') and dm=?3 order by creation_time desc" ,nativeQuery = true)
     List<infoReport>findByUserCodeAndReportDateContainingAndDm(int userCode,String reportDate,String dm);
-
 }

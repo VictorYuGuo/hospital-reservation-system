@@ -29,6 +29,11 @@ public class DoctorServiceImpl implements DoctorService{
     }
 
     @Override
+    public List<infoDoc> findByDm(String dm) {
+        return doctorRepository.findByDm(dm);
+    }
+
+    @Override
     public List<String> findAllSubject() {
         return doctorRepository.findAllSubject();
     }

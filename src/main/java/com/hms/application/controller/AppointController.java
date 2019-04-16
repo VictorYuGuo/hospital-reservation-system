@@ -115,7 +115,9 @@ public class AppointController {
             subject.setDocName(subjects.get(i));
             returnSubjects.add(subject);
         }
-        List<infoDoc>doctors = doctorService.findAll();
+//        List<infoDoc>doctors = doctorService.findAll();
+        //根据删除标志查找非删除的所有医生
+        List<infoDoc>doctors = doctorService.findByDm("0");
         SubjectDoctor subjectDoctor = new SubjectDoctor();
         subjectDoctor.setDoctors(doctors);
         subjectDoctor.setSubjects(returnSubjects);
